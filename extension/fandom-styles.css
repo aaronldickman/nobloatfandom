@@ -1,0 +1,10 @@
+/* fix page formatting after removing elements */
+.main-container {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 100% !important;
+}
+
+.fandom-sticky-header {
+    left: 0 !important;
+}
