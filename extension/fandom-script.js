@@ -1,11 +1,20 @@
-const ELEMENTS_TO_REMOVE = [
+const BLOAT_ELEMENTS = [
     ".global-navigation",
     ".global-footer",
+    "#highlight__main-container",
     ".page__right-rail",            // "others like you also viewed..." content sidebar
     ".render-wiki-recommendations", // "others like you also viewed..." content footer
     "#mixed-content-footer",        // recs for other unrelated wikis
     "#WikiaBar"                     // links to fandom socials in bottom right
 ].join(", ");
+
+const AD_ELEMENTS = [
+    "#featured-video__player",
+    ".top-ads-container",
+    ".bottom-ads-container"
+].join(", ");
+
+const ELEMENTS_TO_REMOVE = BLOAT_ELEMENTS.concat(", ", AD_ELEMENTS)
 
 // https://stackoverflow.com/questions/32533580/deleting-dom-elements-before-the-page-is-displayed-to-the-screen-in-a-chrome-ex/32537455#32537455
 const observer = new MutationObserver(onMutation);
