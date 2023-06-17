@@ -5,7 +5,8 @@ const BLOAT_ELEMENTS = [
     ".page__right-rail",            // "others like you also viewed..." content sidebar
     ".render-wiki-recommendations", // "others like you also viewed..." content footer
     "#mixed-content-footer",        // recs for other unrelated wikis
-    "#WikiaBar"                     // links to fandom socials in bottom right
+    "#WikiaBar",                    // links to fandom socials in bottom right
+    ".marketing-notifications"      // bottom-left popup shows up on some fandoms
 ].join(", ");
 
 const AD_ELEMENTS = [
