@@ -17,29 +17,28 @@ const AD_ELEMENTS = [
 
 const ELEMENTS_TO_REMOVE = BLOAT_ELEMENTS.concat(", ", AD_ELEMENTS)
 
-// https://stackoverflow.com/questions/32533580/deleting-dom-elements-before-the-page-is-displayed-to-the-screen-in-a-chrome-ex/32537455#32537455
 const observer = new MutationObserver(onMutation);
 onMutation([{ addedNodes: [document.documentElement] }]);
 observe();
 
-
 function onMutation(mutations) {
     let stopped;
-    for (const { addedNodes } of mutations) {
-        for (const node of addedNodes) {
-            if (node.tagName) {
-                if (node.matches(ELEMENTS_TO_REMOVE)) {
-                    stopped = true;
-                    observer.disconnect();
-                    node.remove();
-                } else if (node.firstElementChild && node.querySelector(ELEMENTS_TO_REMOVE)) {
-                    stopped = true;
-                    observer.disconnect();
-                    for (const el of node.querySelectorAll(ELEMENTS_TO_REMOVE)) el.remove();
-                }
-            }
+    const mutatedNodes = mutations.flatMap(m => Array.from(m.addedNodes))
+
+    mutatedNodes.forEach(node => {
+        if (!node.tagName) return;
+
+        if (node.matches(ELEMENTS_TO_REMOVE)) {
+            stopped = true;
+            observer.disconnect();
+            node.remove();
         }
-    }
+        else if (node.firstElementChild && node.querySelector(ELEMENTS_TO_REMOVE)) {
+            stopped = true;
+            observer.disconnect();
+            for (const el of node.querySelectorAll(ELEMENTS_TO_REMOVE)) el.remove();
+        }
+    });
     if (stopped) observe();
 }
 
