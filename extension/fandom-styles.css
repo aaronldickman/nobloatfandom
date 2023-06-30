@@ -8,3 +8,9 @@
 .fandom-sticky-header {
     left: 0 !important;
 }
+
+/* removing global nav at page load has unintended side effects. better to just hide it */
+.global-navigation {
+    display: none !important;
+}
+

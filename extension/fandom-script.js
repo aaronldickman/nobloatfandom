@@ -1,5 +1,4 @@
 const BLOAT_ELEMENTS = [
-    ".global-navigation",
     ".global-footer",
     "#highlight__main-container",
     ".page__right-rail",            // "others like you also viewed..." content sidebar
