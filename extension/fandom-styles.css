@@ -1,16 +1,26 @@
 /* fix page formatting after removing elements */
-.main-container {
+.global-navigation--hidden ~ .main-container {
     margin-left: auto !important;
     margin-right: auto !important;
     width: 100% !important;
 }
 
-.fandom-sticky-header {
+.fandom-sticky-header--navbar-modified {
     left: 0 !important;
 }
 
-/* removing global nav at page load has unintended side effects. better to just hide it */
-.global-navigation {
+.global-navigation--hidden {
     display: none !important;
 }
 
+.global-navigation--minified {
+    max-height: fit-content !important;
+}
+
+.global-navigation__top--hidden {
+    display: none !important;
+}
+
+.wikia-bar--hidden {
+    display: none !important;
+}

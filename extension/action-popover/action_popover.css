@@ -1,0 +1,64 @@
+body {
+    font-size: 1.2rem;
+    width: 500px;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f5f5;
+}
+
+h1, h2, h3 {
+    margin-top: .0625em;
+    margin-bottom: .0625em;
+}
+
+ul {
+    margin: .0625em;
+}
+li {
+    list-style-type: none;
+}
+
+body > * {
+     padding: .75rem;
+}
+
+.popover_header {
+    background-color: #280033;
+    color: white;
+}
+
+.config-option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+label {
+    flex-basis: auto;
+}
+.config-option__description {
+    font-style: italic;
+    font-size: .9rem;
+}
+
+.config-option--disabled {
+    color: grey;
+}
+
+.config-option--disabled .slider {
+    cursor: not-allowed;
+}
+
+.config-option--disabled input:checked + .slider {
+    background-color: #999;
+}
+
+.notransition {
+    transition: none !important;
+}
+
+.notransition:before {
+    transition: none !important;
+}
