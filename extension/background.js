@@ -5,7 +5,6 @@ const defaultConfigValues = {
 }
 
 chrome.runtime.onInstalled.addListener(details => {
-    console.log(details)
     const configMightNotBeInitialized = details.reason === 'install'
         || (details.reason === 'update' && details.previousVersion === "1.3.0");
     if (!configMightNotBeInitialized) return;
