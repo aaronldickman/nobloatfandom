@@ -10,7 +10,7 @@ chrome.runtime.onInstalled.addListener(details => {
     if (!configMightNotBeInitialized) return;
 
     chrome.storage.sync.get(['show-nav-bar']).then(loadedValues => {
-        if (loadedValues['show-nav-bar'] === "undefined") {
+        if (loadedValues['show-nav-bar'] === undefined) {
             chrome.storage.sync.set(defaultConfigValues);
         }
     })

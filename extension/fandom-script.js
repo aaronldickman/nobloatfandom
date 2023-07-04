@@ -9,7 +9,7 @@ const ELEMENTS_TO_REMOVE = [
     ".page__right-rail",            // "others like you also viewed..." content sidebar
     ".render-wiki-recommendations", // "others like you also viewed..." content footer
     "#mixed-content-footer",        // recs for other unrelated wikis
-    ".marketing-notifications",      // bottom-left popup shows up on some fandoms
+    ".marketing-notifications",     // bottom-left popup shows up on some fandoms
     "#featured-video__player",
     ".top-ads-container",
     ".bottom-ads-container"
@@ -76,14 +76,14 @@ class FandomObserverOrchestrator {
             configKeys.forEach(key => {
                 if (key in changes) this.config[key] = changes[key].newValue;
             });
+            const navBarModified = !this.config[showNavBar] || this.config[useMinifiedNavBar]
             if (useMinifiedNavBar in changes) {
-                console.log('useminifiednavbar')
                 minifyNavBar(this.config[useMinifiedNavBar])
-                updateStickyHeader(!this.config[showNavBar] || this.config[useMinifiedNavBar])
+                updateStickyHeader(navBarModified)
             }
             if (showNavBar in changes) {
                 hideNavBar(!this.config[showNavBar])
-                updateStickyHeader(!this.config[showNavBar] || this.config[useMinifiedNavBar])
+                updateStickyHeader(navBarModified)
             }
             if (showWikiaBar in changes) {
                 hideWikiaBar(!this.config[showWikiaBar])
@@ -108,8 +108,6 @@ class FandomObserverOrchestrator {
                 updateStickyHeader( !this.config[showNavBar] || this.config[useMinifiedNavBar]);
             } else if (node.matches(ELEMENTS_TO_REMOVE)) {
                 node.remove();
-            } else if (node.firstElementChild && node.querySelector(ELEMENTS_TO_REMOVE)) {
-                node.querySelectorAll(ELEMENTS_TO_REMOVE).forEach(el => el.remove())
             }
         });
         if (this.observationHalted) this.observe();
