@@ -11,8 +11,10 @@ const ELEMENTS_TO_REMOVE = [
     "#mixed-content-footer",        // recs for other unrelated wikis
     ".marketing-notifications",     // bottom-left popup shows up on some fandoms
     "#featured-video__player",
+    "#featured-video__player-container",
     ".top-ads-container",
-    ".bottom-ads-container"
+    ".bottom-ads-container",
+    "#mw-data-after-content"        // footer other wiki recs
 ].join(", ");
 const GLOBAL_NAVIGATION_BAR = ".global-navigation";
 const GLOBAL_NAVIGATION_BAR_TOP_CONTENT = ".global-navigation__top";
